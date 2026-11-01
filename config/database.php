@@ -6,6 +6,9 @@
  * database initialization, table migrations, and fallback for evaluation.
  */
 
+// Suppress deprecation warnings on PHP 8.5+ serverless runtimes
+error_reporting(E_ALL & ~E_DEPRECATED);
+
 // Database credentials - support environment variables (Vercel / Cloud / Docker / XAMPP)
 $dbUrl = getenv('DATABASE_URL') ?: getenv('MYSQL_URL') ?: '';
 if (!empty($dbUrl)) {
@@ -56,8 +59,7 @@ function get_db_connection() {
             PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             PDO::ATTR_EMULATE_PREPARES   => false,
-            PDO::ATTR_TIMEOUT            => 3,
-            PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4"
+            PDO::ATTR_TIMEOUT            => 3
         ];
         
         $pdo = new PDO($dsn, DB_USER, DB_PASS, $options);
