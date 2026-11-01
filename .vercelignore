@@ -1,0 +1,7 @@
+.git
+.gitignore
+.gemini
+tests
+*.log
+*.tmp
+*.bat

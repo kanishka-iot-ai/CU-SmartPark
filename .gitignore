@@ -1,0 +1,13 @@
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Temporary and build artifacts
+node_modules/
+.vercel
+*.log
+*.tmp
+
+# Note: database/smartpark_db.sqlite is included for instant zero-setup serverless evaluation
